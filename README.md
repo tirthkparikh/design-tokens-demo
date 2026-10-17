@@ -6,7 +6,7 @@ A working example of [figma-live-tokens](https://github.com/tirthkparikh/figma-l
 
 | Workflow | What it does |
 | --- | --- |
-| [Figma sync](.github/workflows/figma-sync.yml) | Pulls the public *IBM Design Language* colour styles from Figma, builds CSS / Tailwind v4 / JS into `tokens/figma/dist`, and opens a pull request listing every changed variable. Runs weekly and on demand. |
+| [Figma sync](.github/workflows/figma-sync.yml) | Pulls the public *IBM Carbon* (White theme) styles from Figma, builds CSS / Tailwind v4 / JS into `tokens/figma/dist`, and opens a pull request listing every changed variable. Runs weekly and on demand. |
 | [Tokens Studio build](.github/workflows/tokens-studio.yml) | When `tokens/studio/tokens.json` changes (as pushed by the Tokens Studio plugin), builds CSS with a light and a dark theme and opens a pull request. |
 | [Pages](.github/workflows/pages.yml) | Publishes the palette page after each merge. |
 

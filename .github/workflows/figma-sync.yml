@@ -14,8 +14,8 @@ jobs:
       - uses: tirthkparikh/figma-live-tokens@v1
         id: tokens
         with:
-          # Public community file: "Color Styles - IBM Design Language"
-          figma-file: https://www.figma.com/file/DLpm4GWpqa1BUEWApXGeGc
+          # Public community file: IBM Carbon Design System, White theme
+          figma-file: https://www.figma.com/file/JhpIXQHbn07yn2GVD806dA
           figma-token: ${{ secrets.FIGMA_TOKEN }}
           input: tokens/figma/tokens.json
           out: tokens/figma/dist
