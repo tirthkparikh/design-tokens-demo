@@ -1,0 +1,22 @@
+# Tokens Studio pushes tokens/studio/tokens.json; this builds CSS + Tailwind and opens a PR.
+name: Tokens Studio build
+on:
+  push:
+    branches: [main]
+    paths: ['tokens/studio/*.json']
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: tirthkparikh/figma-live-tokens@v1
+        with:
+          input: tokens/studio/tokens.json
+          out: tokens/studio/dist
+          formats: css,tailwind4,scss,js
+          args: --sets core,light --theme dark=sets:core,dark
+          branch: design-tokens/studio

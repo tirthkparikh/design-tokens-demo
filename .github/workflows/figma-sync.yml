@@ -1,0 +1,23 @@
+# Pull the design tokens from Figma and open a pull request when they changed.
+name: Figma sync
+on:
+  schedule: [{ cron: '0 6 * * 1' }]   # Mondays; Figma limits API reads, so keep this infrequent
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: tirthkparikh/figma-live-tokens@v1
+        id: tokens
+        with:
+          # Public community file: "Color Styles - IBM Design Language"
+          figma-file: https://www.figma.com/file/DLpm4GWpqa1BUEWApXGeGc
+          figma-token: ${{ secrets.FIGMA_TOKEN }}
+          input: tokens/figma/tokens.json
+          out: tokens/figma/dist
+          formats: css,tailwind4,js,json
+      - run: echo "changed=${{ steps.tokens.outputs.changed }} pr=${{ steps.tokens.outputs.pull-request-url }}"
